@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="bg-white rounded py-2 px-2.5 h-14 mb-1 border-b-2"
+      class="bg-white rounded py-2 px-2.5 h-14 mb-1 border-b-2 relative"
       :class="errorMessage ? 'border-red-300' : 'border-b-gray-300'"
     >
       <label :for="name" class="block text-xs font-medium text-gray-900">{{ label }}</label>
@@ -13,6 +13,9 @@
         class="bg-transparent text-gray-900 text-base block w-full p-0"
         :placeholder="placeholder"
       />
+      <div class="absolute inset-y-0 right-0 flex items-center pr-3.5">
+        <slot name="append-icon"></slot>
+      </div>
     </div>
     <span v-if="errorMessage" class="text-xs text-red-600 px-2 absolute">{{ errorMessage }}</span>
   </div>

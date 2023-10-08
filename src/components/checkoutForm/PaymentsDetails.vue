@@ -7,15 +7,23 @@
           placeholder="0000-0000-0000-0000"
           name="cardnumber"
           maska="####-####-####-####"
-        />
+        >
+          <template #append-icon>
+            <VisaIcon class="w-10 h-3 mr-2 -ml-1"></VisaIcon>
+          </template>
+        </BaseInput>
       </div>
-      <BaseInput
-        label="Security code"
-        placeholder="***"
-        name="seccode"
-        maska="###"
-        type="password"
-      />
+      <BaseInput label="Security code" placeholder="***" name="seccode" maska="###" type="password">
+        <template #append-icon>
+          <Popover class="relative z-50">
+            <PopoverButton><InfoIcon /></PopoverButton>
+
+            <PopoverPanel class="absolute z-10 w-48 bg-gray-900 opacity-90 text-white rounded p-3">
+              <p>How to find your secure code</p>
+            </PopoverPanel>
+          </Popover>
+        </template>
+      </BaseInput>
       <BaseInput label="Expiration date" placeholder="MM/YY" maska="##/##" name="expdate" />
     </div>
     <div class="md:col-span-2 flex flex-col gap-3">
@@ -35,6 +43,16 @@ import { defineEmits } from 'vue'
 import BaseInput from '../base/BaseInput.vue'
 import CheckoutIcon from '../icon/CheckoutIcon.vue'
 import BaseButton from '../base/BaseButton.vue'
+import VisaIcon from '../icon/VisaIcon.vue'
+import InfoIcon from '../icon/InfoIcon.vue'
+import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
 
 defineEmits(['submit', 'prev', 'next'])
+
+const creditCardsecureCodeHint = `
+  <div class="flex flex-col gap-3">
+    <h3 class="text-sm font-bold">How to find your secure code</h3>
+    <img src="/solutions.jpg" alt="" />
+  </div>
+`
 </script>
