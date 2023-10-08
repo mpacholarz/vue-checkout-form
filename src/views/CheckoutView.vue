@@ -38,22 +38,22 @@ const validationSchema = [
     email: string().email().required(),
     postalCode: string()
       .required()
-      .matches(/^[0-9]{5}?$/),
+      .matches(/^[0-9]{5}?$/, 'Postal code must be 5 digits'),
     phoneNumber: string()
       .required()
-      .matches(/^\([0-9]{3}\) [0-9]{3}-[0-9]{2}-[0-9]{2}$/),
+      .matches(/^\([0-9]{3}\) [0-9]{3}-[0-9]{2}-[0-9]{2}$/, 'Phone number must be in format (000) 000-00-00'),
     country: string().required()
   }),
   object({
     cardnumber: string()
       .required()
-      .matches(/^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$/),
+      .matches(/^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$/, 'Card number must be in format 0000-0000-0000-0000'),
     seccode: string()
       .required()
-      .matches(/^[0-9]{3}$/),
+      .matches(/^[0-9]{3}$/, 'Security code must be 3 digits'),
     expdate: string()
       .required()
-      .matches(/^[0-9]{2}\/[0-9]{2}$/)
+      .matches(/^[0-9]{2}\/[0-9]{2}$/, 'Expiration date must be in format MM/YY')
   })
 ]
 
